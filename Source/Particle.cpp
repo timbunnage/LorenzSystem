@@ -10,13 +10,17 @@ Particle::Particle(
 
 
 void Particle::UpdatePos() {
-	std::cout << lorenzX(currPos.x, currPos.y, currPos.z) << std::endl;
-	std::cout << lorenzY(currPos.x, currPos.y, currPos.z) << std::endl;
-	std::cout << lorenzZ(currPos.x, currPos.y, currPos.z) << std::endl;
-
+	currPos.x += 1.0e-4 * lorenzX(currPos.x, currPos.y, currPos.z);
+	currPos.y += 1.0e-4 * lorenzY(currPos.x, currPos.y, currPos.z);
+	currPos.z += 1.0e-4 * lorenzZ(currPos.x, currPos.y, currPos.z);
 }
 
 void Particle::draw() {
+	std::cout << currPos.x << ", " << currPos.y << ", " << currPos.z << std::endl;
+	// std::cout << lorenzX(currPos.x, currPos.y, currPos.z) << std::endl;
+	// std::cout << lorenzY(currPos.x, currPos.y, currPos.z) << std::endl;
+	// std::cout << lorenzZ(currPos.x, currPos.y, currPos.z) << std::endl;
+
 
 }
 
