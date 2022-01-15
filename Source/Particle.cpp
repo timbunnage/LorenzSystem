@@ -3,23 +3,29 @@
 
 // constructor, intialises data
 Particle::Particle(
-	Position initialPos,
-	std::function<double(double)> dx,
-	std::function<double(double)> dy,
-	std::function<double(double)> dz
-) : initialPos(initialPos), dx(dx), dy(dy), dz(dz), currPos(initialPos)
+	Position initialPos
+) : initialPos(initialPos), currPos(initialPos)
 {
-	
 }
 
 
 void Particle::UpdatePos() {
-	std::cout << dx(currPos.x) << std::endl;
-	std::cout << dy(currPos.y) << std::endl;
-	std::cout << dz(currPos.z) << std::endl;
+	std::cout << lorenzX(currPos.x, currPos.y, currPos.z) << std::endl;
+	std::cout << lorenzY(currPos.x, currPos.y, currPos.z) << std::endl;
+	std::cout << lorenzZ(currPos.x, currPos.y, currPos.z) << std::endl;
 
 }
 
 void Particle::draw() {
 
+}
+
+double Particle::lorenzX(double x, double y, double z) {
+	return 10.0 * (y - x);
+}
+double Particle::lorenzY(double x, double y, double z) {
+	return x * (28.0 - z) - y;
+}
+double Particle::lorenzZ(double x, double y, double z) {
+	return x * y;
 }

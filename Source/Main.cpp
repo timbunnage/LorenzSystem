@@ -2,7 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include "Particle.h"
 
-double func(double x);
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
@@ -11,7 +10,7 @@ int main() {
 
 
     // Create a single particle
-    Particle p = Particle({2,3,4}, &func, &func, &func);
+    Particle p = Particle({2.0,3.0,4.0});
 
     // Test the functions (print the output)
     p.UpdatePos();
@@ -37,6 +36,3 @@ int main() {
 }
 
 // TEST FUNCTION
-double func(double x) {
-    return x * x;
-}

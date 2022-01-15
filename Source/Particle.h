@@ -3,7 +3,7 @@
 
 // 3D position coordinates
 struct Position {
-	long x, y, z;
+	double x, y, z;
 };
 
 class Particle {
@@ -11,25 +11,21 @@ private:
 	// intialise position of the particle (incase we need it)
 	Position initialPos;
 
-	// d/dt functions
-	std::function<double(double)> dx;
-	std::function<double(double)> dy;
-	std::function<double(double)> dz;
-
 	// current position
 	Position currPos;
 
+	double lorenzX(double x, double y, double z);
+	double lorenzY(double x, double y, double z);
+	double lorenzZ(double x, double y, double z);
+
 public:
 	// constructor
-	Particle(
-		Position initialPos,
-		std::function<double(double)> dx,
-		std::function<double(double)> dy,
-		std::function<double(double)> dz);
+	Particle( Position initialPos );
 
 	// updates the current position based on the functions
 	void UpdatePos();
 
 	// draws the particle on the screen
 	void draw();
+
 };
