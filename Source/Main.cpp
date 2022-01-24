@@ -11,9 +11,9 @@ int main() {
     // Create random initial condition
     srand(time(NULL));
 
-    double initx = 30.0 * rand() / RAND_MAX; - 15;
-    double inity = 30.0 * rand() / RAND_MAX; - 15;
-    double initz = 30.0 * rand() / RAND_MAX; - 15;
+    double initx = 100.0 * rand() / RAND_MAX - 50;
+    double inity = 30.0 * rand() / RAND_MAX - 15;
+    double initz = 50.0 * rand() / RAND_MAX;
 
     printf("Initial position: (%f, %f, %f)\n", initx, inity, initz);
 
@@ -32,6 +32,9 @@ int main() {
     //     p.draw();
     // }
 
+    sf::Clock clock;
+    int frameFreq = 144;
+ 
 
     while (window.isOpen())
     {
@@ -58,12 +61,18 @@ int main() {
         p4.UpdatePos();
         p5.UpdatePos();
 
-        p1.draw(window);
-        p2.draw(window);
-        p3.draw(window);
-        p4.draw(window);
-        p5.draw(window);
-        window.display();
+
+        if (clock.getElapsedTime().asMilliseconds() > 1000 / frameFreq)
+        {
+            clock.restart();
+            window.clear();
+            p1.draw(window);
+            p2.draw(window);
+            p3.draw(window);
+            p4.draw(window);
+            p5.draw(window);
+            window.display();
+        }
     }
 
     return 0;

@@ -2,6 +2,7 @@
 #include <functional>
 #include <SFML/Graphics.hpp>
 
+const signed int TAIL_LENGTH = 1000;
 
 // 3D position coordinates
 struct Position {
@@ -14,16 +15,19 @@ private:
 	Position initialPos;
 
 	// current position
-	Position currPos;
+	signed int currPos;
+
+	// current rotation
+	double theta;
 
 	sf::CircleShape point;
-
 
 	double lorenzX(double x, double y, double z);
 	double lorenzY(double x, double y, double z);
 	double lorenzZ(double x, double y, double z);
 
-
+	// last n positions
+	Position posList[TAIL_LENGTH];
 
 public:
 	// constructor
